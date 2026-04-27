@@ -1,9 +1,8 @@
 export const Hero = () => {
     return (
-        // h-screen asegura que ocupe exactamente el alto del celular/pantalla
-        <section id="home" className="relative h-screen w-full overflow-hidden">
+        <section id="home" className="relative h-screen w-full overflow-hidden bg-dark-bg dark:bg-dark-bg light:bg-ari-offwhite">
 
-            {/* Solo esta imagen debe existir como fondo principal */}
+            {/* Imágenes de fondo responsivas */}
             <img
                 src="/fondo.jpeg"
                 className="hidden lg:block absolute inset-0 w-full h-full object-cover"
@@ -15,10 +14,8 @@ export const Hero = () => {
                 alt="Fondo Móvil"
             />
 
-            {/* Este overlay unifica todo el diseño */}
-            <div className="absolute inset-0 bg-slate-950/20 lg:bg-gradient-to-r lg:from-slate-950 lg:to-transparent"></div>
-
-            {/* Resto del contenido... */}
+            {/* Overlay adaptativo para light y dark mode */}
+            <div className="absolute inset-0 bg-slate-950/20 dark:bg-slate-950/20 light:bg-white/10 lg:bg-gradient-to-r lg:dark:from-slate-950 lg:dark:to-transparent lg:light:from-white/20 lg:light:to-transparent"></div>
         </section>
     );
 };
