@@ -8,6 +8,7 @@ import { Community } from './components/Community';
 import { Shop } from './components/Shop';
 import { Footer } from './components/Footer';
 import { ThemeShowcase } from './pages/ThemeShowcase';
+import { ThemeDynamicsPage } from './pages/ThemeDynamicsPage';
 import { useEffect } from 'react';
 
 function App() {
@@ -18,9 +19,14 @@ function App() {
     document.documentElement.classList.add(savedTheme);
   }, []);
 
-  // Detectar si estamos en la página de showcase
+  // Detectar si estamos en la página de showcase o tema dinámico
   const isShowcase = window.location.pathname === '/theme-showcase' || window.location.hash === '#theme-showcase';
+  const isThemeDynamics = window.location.pathname === '/theme-dynamics' || window.location.hash === '#theme-dynamics';
   
+  if (isThemeDynamics) {
+    return <ThemeDynamicsPage />;
+  }
+
   if (isShowcase) {
     return (
       <>

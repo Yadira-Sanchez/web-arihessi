@@ -31,11 +31,12 @@ export const Navbar = () => {
         { name: 'Sobre Mí', href: '#about', id: 'about' },
         { name: 'Horario', href: '#schedule', id: 'schedule' },
         { name: 'Contenido', href: '#lore', id: 'lore' },
-        { name: 'Galería', href: '#travels', id: 'travels' }, // Cambiado Viajes por Galería
+        { name: 'Galería', href: '#travels', id: 'travels' },
         { name: 'Comunidad', href: '#community', id: 'community' },
         { name: 'Tienda', href: '#shop', id: 'shop' },
         { name: 'Contacto', href: '#footer', id: 'footer' },
         { name: 'Theme Demo', href: '#theme-showcase', id: 'theme-showcase', isExternal: true },
+        { name: 'System', href: '#theme-dynamics', id: 'theme-dynamics', isExternal: true },
     ];
 
     // ... (Toda tu lógica de useEffect e isOpen se mantiene igual)
@@ -62,7 +63,7 @@ export const Navbar = () => {
                         <a key={link.id} href={link.href} onClick={(e) => {
                             if (link.isExternal) {
                                 e.preventDefault();
-                                window.location.hash = 'theme-showcase';
+                                window.location.hash = link.href.substring(1);
                                 window.scrollTo({ top: 0, behavior: 'smooth' });
                             }
                         }}
@@ -105,7 +106,7 @@ export const Navbar = () => {
                         <a key={link.id} href={link.href} onClick={(e) => {
                             if (link.isExternal) {
                                 e.preventDefault();
-                                window.location.hash = 'theme-showcase';
+                                window.location.hash = link.href.substring(1);
                                 window.scrollTo({ top: 0, behavior: 'smooth' });
                             }
                             setIsOpen(false);
