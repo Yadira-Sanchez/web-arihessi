@@ -22,11 +22,11 @@ export const Content = () => {
             <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-ari-lavender/5 blur-[120px] rounded-full"></div>
 
             <div className="max-w-7xl mx-auto relative z-10">
-                
+
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-                    
+
                     {/* SECCIÓN 1: LORE Y TERROR */}
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -44,14 +44,14 @@ export const Content = () => {
 
                         {/* Video Destacado Lore */}
                         <div className="relative group aspect-video rounded-[3rem] overflow-hidden border border-white/10 bg-slate-900 shadow-2xl shadow-rose-900/10">
-                            <img 
-                                src={`https://img.youtube.com/vi/${loreVideos[0].id}/maxresdefault.jpg`} 
+                            <img
+                                src={`https://img.youtube.com/vi/${loreVideos[0].id}/maxresdefault.jpg`}
                                 alt="Main Lore Video"
                                 className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-all duration-700"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80"></div>
-                            <a 
-                                href={`https://youtu.be/${loreVideos[0].id}`} 
+                            <a
+                                href={`https://youtu.be/${loreVideos[0].id}`}
                                 target="_blank" rel="noreferrer"
                                 className="absolute inset-0 flex items-center justify-center"
                             >
@@ -73,7 +73,7 @@ export const Content = () => {
                     </motion.div>
 
                     {/* SECCIÓN 2: ZEN & FERRETS */}
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -92,14 +92,14 @@ export const Content = () => {
 
                         {/* Video Destacado Zen */}
                         <div className="relative group aspect-video rounded-[3rem] overflow-hidden border border-white/10 bg-slate-900 shadow-2xl shadow-purple-900/10">
-                            <img 
-                                src={`https://img.youtube.com/vi/${zenVideos[0].id}/maxresdefault.jpg`} 
+                            <img
+                                src={`https://img.youtube.com/vi/${zenVideos[0].id}/maxresdefault.jpg`}
                                 alt="Main Zen Video"
                                 className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-all duration-700"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80"></div>
-                            <a 
-                                href={`https://youtu.be/${zenVideos[0].id}`} 
+                            <a
+                                href={`https://youtu.be/${zenVideos[0].id}`}
                                 target="_blank" rel="noreferrer"
                                 className="absolute inset-0 flex items-center justify-center"
                             >

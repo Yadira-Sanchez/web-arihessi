@@ -1,4 +1,5 @@
 import { Navbar } from './components/Navbar';
+import { Hero } from './components/Hero';
 import { About } from './components/About';
 import { Games } from './components/Games';
 import { Content } from './components/Content';
@@ -7,6 +8,7 @@ import { Travels } from './components/Travels';
 import { Community } from './components/Community';
 import { Shop } from './components/Shop';
 import { Footer } from './components/Footer';
+
 
 
 function App() {
@@ -48,6 +50,8 @@ function App() {
 
       {/* --- RESTO DE SECCIONES --- */}
       <div className="space-y-10"> {/* Espaciado elegante entre bloques */}
+        <Navbar />
+        <Hero />
         <About />
         <Games />
         <Schedule />
