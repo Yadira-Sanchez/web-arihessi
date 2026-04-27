@@ -8,10 +8,16 @@ import { Community } from './components/Community';
 import { Shop } from './components/Shop';
 import { Footer } from './components/Footer';
 import { ThemeShowcase } from './pages/ThemeShowcase';
-
-
+import { useEffect } from 'react';
 
 function App() {
+  // Inicializar el tema al cargar la app
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.classList.remove('light', 'dark');
+    document.documentElement.classList.add(savedTheme);
+  }, []);
+
   // Detectar si estamos en la página de showcase
   const isShowcase = window.location.pathname === '/theme-showcase' || window.location.hash === '#theme-showcase';
   
