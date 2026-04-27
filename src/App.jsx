@@ -13,7 +13,7 @@ import { Footer } from './components/Footer';
 
 function App() {
   return (
-    <main className="min-h-screen bg-dark-bg text-white selection:bg-ari-rose/30">
+    <main className="min-h-screen bg-dark-bg dark:bg-dark-bg light:bg-ari-offwhite text-white dark:text-white light:text-slate-900 selection:bg-ari-rose/30 transition-colors duration-300">
       <Navbar />
 
       {/* --- SECCIÓN HERO (Lo que faltaba) --- */}
