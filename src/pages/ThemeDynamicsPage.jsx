@@ -1,48 +1,26 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Sun, Moon } from 'lucide-react';
+import { ThemeToggleButton } from '../components/ThemeToggleButton';
 
 export const ThemeDynamicsPage = () => {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(true);
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
     const htmlElement = document.documentElement;
-    const currentTheme = htmlElement.classList.contains('dark');
-    setIsDark(currentTheme);
+    setIsDark(htmlElement.classList.contains('dark'));
   }, []);
-
-  const toggleTheme = () => {
-    const htmlElement = document.documentElement;
-    const newTheme = isDark ? 'light' : 'dark';
-    
-    htmlElement.classList.remove('light', 'dark');
-    htmlElement.classList.add(newTheme);
-    localStorage.setItem('theme', newTheme);
-    setIsDark(!isDark);
-  };
 
   if (!isClient) return null;
 
   return (
-    <div className="bg-white text-slate-900 transition-colors duration-500 dark:bg-slate-950 dark:text-white min-h-screen">
+    <div className="w-full min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-white transition-colors duration-500 relative flex flex-col">
       {/* BOTÓN FLOTANTE TOGGLE */}
-      <motion.button
-        onClick={toggleTheme}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        className="fixed top-8 right-8 z-50 w-14 h-14 rounded-full bg-gradient-to-br from-ari-rose to-ari-lavender shadow-lg dark:shadow-ari-rose/20 flex items-center justify-center text-white font-bold transition-all duration-500"
-      >
-        {isDark ? (
-          <Sun className="w-6 h-6" />
-        ) : (
-          <Moon className="w-6 h-6" />
-        )}
-      </motion.button>
+      <ThemeToggleButton />
 
       {/* CONTENEDOR PRINCIPAL */}
-      <div className="w-full">
+      <div className="w-full flex-1">
         
         {/* SECCIÓN HERO */}
         <section className="relative min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-950 flex items-center justify-center overflow-hidden transition-colors duration-500">
@@ -73,16 +51,6 @@ export const ThemeDynamicsPage = () => {
               <p className="text-lg md:text-2xl text-slate-600 dark:text-slate-300 font-medium transition-colors duration-500">
                 Explora cómo los colores, bordes y sombras se transforman automáticamente
               </p>
-
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={toggleTheme}
-                className="inline-flex items-center gap-3 px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-full font-bold text-lg transition-all duration-500 shadow-lg dark:shadow-2xl dark:shadow-ari-rose/20"
-              >
-                {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-                {isDark ? 'Modo Claro' : 'Modo Oscuro'}
-              </motion.button>
             </motion.div>
           </div>
         </section>
@@ -140,31 +108,25 @@ export const ThemeDynamicsPage = () => {
                   icon: '🎨',
                   title: 'Colores Adaptativos',
                   desc: 'Los fondos cambian de claro a oscuro preservando legibilidad',
-                  bgLight: 'bg-slate-100',
-                  bgDark: 'bg-slate-900',
                   borderColor: 'ari-rose',
                 },
                 {
                   icon: '✨',
                   title: 'Sombras Inteligentes',
                   desc: 'Modo claro: sombras sutiles. Modo oscuro: resplandor elegante',
-                  bgLight: 'bg-slate-100',
-                  bgDark: 'bg-slate-900',
                   borderColor: 'ari-lavender',
                 },
                 {
                   icon: '⚡',
                   title: 'Transiciones Suaves',
                   desc: 'Todos los cambios usan duration-500 para fluidez visual',
-                  bgLight: 'bg-slate-100',
-                  bgDark: 'bg-slate-900',
                   borderColor: 'ari-mint',
                 },
               ].map((card, idx) => (
                 <motion.div
                   key={idx}
                   whileHover={{ y: -10 }}
-                  className={`p-8 ${card.bgLight} dark:${card.bgDark} rounded-2xl border-2 border-slate-200 dark:border-slate-800 shadow-lg dark:shadow-2xl transition-all duration-500 ${
+                  className={`p-8 bg-slate-100 dark:bg-slate-900 rounded-2xl border-2 border-slate-200 dark:border-slate-800 shadow-lg dark:shadow-2xl transition-all duration-500 ${
                     card.borderColor === 'ari-rose' ? 'dark:shadow-ari-rose/20' :
                     card.borderColor === 'ari-lavender' ? 'dark:shadow-ari-lavender/20' :
                     'dark:shadow-ari-mint/20'
@@ -315,10 +277,16 @@ const toggleTheme = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={toggleTheme}
+              onClick={() => {
+                const html = document.documentElement;
+                html.classList.remove('dark', 'light');
+                const newTheme = !isDark ? 'dark' : 'light';
+                html.classList.add(newTheme);
+                localStorage.setItem('theme', newTheme);
+                setIsDark(!isDark);
+              }}
               className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-ari-rose to-ari-lavender text-white rounded-full font-bold text-lg shadow-2xl shadow-ari-rose/50 transition-all duration-500"
             >
-              {isDark ? <Sun className="w-6 h-6" /> : <Moon className="w-6 h-6" />}
               Cambiar Tema Ahora
             </motion.button>
           </div>

@@ -10,13 +10,13 @@
   --color-dark-card: #1E293B;
 }
 
-/* Configuramos transiciones globales PRIMERO */
+/* Configuramos transiciones globales PRIMERO - CRITICO */
 @layer base {
   * {
     @apply transition-colors duration-500;
   }
 
-  /* Estilos base del HTML en modo DARK (por defecto) */
+  /* Modo DARK - HTML root con clase 'dark' */
   html.dark {
     color-scheme: dark;
     background-color: #020617;
@@ -28,7 +28,7 @@
     color: #f8fafc;
   }
 
-  /* Estilos base del HTML en modo LIGHT */
+  /* Modo LIGHT - HTML root con clase 'light' */
   html.light {
     color-scheme: light;
     background-color: #ffffff;
@@ -40,12 +40,16 @@
     color: #0f172a;
   }
 
-  /* Elementos por defecto */
+  /* Por defecto (si no hay clase asignada, usa dark) */
+  html {
+    background-color: #020617;
+    color: #f8fafc;
+  }
+
   body {
     @apply min-h-screen transition-colors duration-500;
   }
 
-  /* Inputs y botones */
   input, textarea, select, button {
     @apply transition-colors duration-500;
   }
