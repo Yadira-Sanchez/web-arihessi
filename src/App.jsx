@@ -7,12 +7,25 @@ import { Travels } from './components/Travels';
 import { Community } from './components/Community';
 import { Shop } from './components/Shop';
 import { Footer } from './components/Footer';
+import { ThemeShowcase } from './pages/ThemeShowcase';
 
 
 
 function App() {
+  // Detectar si estamos en la página de showcase
+  const isShowcase = window.location.pathname === '/theme-showcase' || window.location.hash === '#theme-showcase';
+  
+  if (isShowcase) {
+    return (
+      <>
+        <Navbar />
+        <ThemeShowcase />
+      </>
+    );
+  }
+
   return (
-    <main className="min-h-screen bg-dark-bg dark:bg-dark-bg light:bg-ari-offwhite text-white dark:text-white light:text-slate-900 selection:bg-ari-rose/30 transition-colors duration-300">
+    <main className="min-h-screen bg-white dark:bg-slate-950 text-slate-950 dark:text-slate-100 selection:bg-ari-rose/30 transition-colors duration-500">
       <Navbar />
 
       {/* --- SECCIÓN HERO (Lo que faltaba) --- */}

@@ -35,6 +35,7 @@ export const Navbar = () => {
         { name: 'Comunidad', href: '#community', id: 'community' },
         { name: 'Tienda', href: '#shop', id: 'shop' },
         { name: 'Contacto', href: '#footer', id: 'footer' },
+        { name: 'Theme Demo', href: '#theme-showcase', id: 'theme-showcase', isExternal: true },
     ];
 
     // ... (Toda tu lógica de useEffect e isOpen se mantiene igual)
@@ -58,7 +59,13 @@ export const Navbar = () => {
                 {/* LINKS DESKTOP */}
                 <div className="hidden lg:flex gap-6">
                     {navLinks.map((link) => (
-                        <a key={link.id} href={link.href}
+                        <a key={link.id} href={link.href} onClick={(e) => {
+                            if (link.isExternal) {
+                                e.preventDefault();
+                                window.location.hash = 'theme-showcase';
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                            }
+                        }}
                             className={`text-[10px] font-black uppercase tracking-[0.15em] transition-all duration-300 ${activeSection === link.id ? 'text-ari-rose scale-110' : 'text-slate-500 dark:text-slate-500 light:text-slate-400 hover:text-white dark:hover:text-white light:hover:text-slate-900'
                                 }`}
                         >
@@ -95,7 +102,14 @@ export const Navbar = () => {
                 }`}>
                 <div className="flex flex-col items-center gap-6">
                     {navLinks.map((link) => (
-                        <a key={link.id} href={link.href} onClick={() => setIsOpen(false)}
+                        <a key={link.id} href={link.href} onClick={(e) => {
+                            if (link.isExternal) {
+                                e.preventDefault();
+                                window.location.hash = 'theme-showcase';
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                            }
+                            setIsOpen(false);
+                        }}
                             className={`text-2xl font-black uppercase tracking-[0.2em] transition-all dark:text-white light:text-slate-900 ${activeSection === link.id ? 'text-ari-rose' : 'dark:text-white dark:active:text-ari-rose light:text-slate-900 light:active:text-ari-rose'
                                 }`}
                         >

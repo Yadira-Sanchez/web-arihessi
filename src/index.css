@@ -10,43 +10,51 @@
   --color-dark-card: #1E293B;
 }
 
-/* Configuramos el comportamiento global */
+/* Configuramos el comportamiento global con transiciones suaves */
 @layer base {
+  * {
+    @apply transition-colors duration-500;
+  }
+
   body {
-    background-color: #0F172A; /* El Dark BG fijo */
-    color: #ffffff;
-    @apply min-h-screen transition-colors duration-300;
-  }
-
-  /* Dark mode (por defecto) */
-  html.dark {
     background-color: #0F172A;
-    color: #ffffff;
+    color: #f1f5f9;
+    @apply min-h-screen;
   }
 
-  /* Light mode */
+  /* Dark mode (por defecto) - Especificación: bg-slate-950, text-slate-100 principal, text-slate-400 secundario */
+  html.dark {
+    background-color: #020617;
+    color: #f8fafc;
+    @apply transition-colors duration-500;
+  }
+
+  html.dark body {
+    background-color: #020617;
+    color: #f8fafc;
+  }
+
+  /* Light mode - Especificación: bg-white, text-slate-950 principal, text-slate-600 secundario */
   html.light {
-    background-color: #F8FAFC;
-    color: #0F172A;
+    background-color: #ffffff;
+    color: #0f172a;
+    @apply transition-colors duration-500;
   }
 
-  /* Light mode - colores específicos */
   html.light body {
-    background-color: #F8FAFC;
-    color: #0F172A;
+    background-color: #ffffff;
+    color: #0f172a;
+  }
+
+  /* Asegurar que los elementos de input también tengan transición */
+  input, textarea, select, button {
+    @apply transition-colors duration-500;
   }
 }
 
-
-/* Añade esto al final de tu index.css */
-.mask-image-gradient {
-  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-}
-
+/* Utilidades para mask-image gradient */
 @layer utilities {
   .mask-image-gradient {
-    /* Esto hace que la foto se desvanezca por abajo para que no se vea el corte recto */
     mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
     -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
   }
