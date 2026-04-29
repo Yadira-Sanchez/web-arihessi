@@ -36,8 +36,6 @@ export const Navbar = () => {
         { name: 'Comunidad', href: '#community', id: 'community' },
         { name: 'Tienda', href: '#shop', id: 'shop' },
         { name: 'Contacto', href: '#footer', id: 'footer' },
-        { name: 'Theme Demo', href: '#theme-showcase', id: 'theme-showcase', isExternal: true },
-        { name: 'System', href: '#theme-dynamics', id: 'theme-dynamics', isExternal: true },
     ];
 
     // ... (Toda tu lógica de useEffect e isOpen se mantiene igual)
@@ -47,14 +45,14 @@ export const Navbar = () => {
             <div className="max-w-7xl mx-auto flex justify-between items-center">
 
                 {/* LOGO CON HOVER EFFECT */}
-                <motion.a 
-                    href="#home" 
+                <motion.a
+                    href="#home"
                     onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setIsOpen(false); }}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="flex items-center gap-2 sm:gap-3 group cursor-pointer z-[110] pr-4 sm:pr-6"
                 >
-                    <motion.div 
+                    <motion.div
                         className="w-8 sm:w-10 h-8 sm:h-10 rounded-lg sm:rounded-xl bg-gradient-to-br from-ari-rose to-ari-lavender border border-ari-rose/30 overflow-hidden shrink-0 flex items-center justify-center"
                         whileHover={{ rotate: 10 }}
                     >
@@ -68,9 +66,9 @@ export const Navbar = () => {
                 {/* LINKS DESKTOP CON ANIMACIÓN DE SUBRAYADO */}
                 <div className="hidden lg:flex gap-8">
                     {navLinks.map((link, idx) => (
-                        <motion.a 
-                            key={link.id} 
-                            href={link.href} 
+                        <motion.a
+                            key={link.id}
+                            href={link.href}
                             onClick={(e) => {
                                 if (link.isExternal) {
                                     e.preventDefault();
@@ -117,7 +115,7 @@ export const Navbar = () => {
             </div>
 
             {/* MENÚ MÓVIL CON ANIMACIONES */}
-            <motion.div 
+            <motion.div
                 initial={false}
                 animate={isOpen ? "open" : "closed"}
                 variants={{
@@ -127,7 +125,7 @@ export const Navbar = () => {
                 transition={{ duration: 0.3 }}
                 className="fixed inset-0 h-screen w-full bg-white dark:bg-slate-950 light:bg-white flex flex-col items-center justify-center z-[99]"
             >
-                <motion.div 
+                <motion.div
                     className="flex flex-col items-center gap-6 px-4"
                     variants={{
                         open: {
@@ -139,9 +137,9 @@ export const Navbar = () => {
                     }}
                 >
                     {navLinks.map((link) => (
-                        <motion.a 
-                            key={link.id} 
-                            href={link.href} 
+                        <motion.a
+                            key={link.id}
+                            href={link.href}
                             onClick={(e) => {
                                 if (link.isExternal) {
                                     e.preventDefault();
@@ -159,8 +157,8 @@ export const Navbar = () => {
                             {link.name}
                         </motion.a>
                     ))}
-                    <motion.a 
-                        href="https://twitch.tv/arihessi" 
+                    <motion.a
+                        href="https://twitch.tv/arihessi"
                         target="_blank"
                         rel="noopener noreferrer"
                         variants={{
